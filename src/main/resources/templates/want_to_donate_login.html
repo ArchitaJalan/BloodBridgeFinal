@@ -3,45 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Bridge- </title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Blood Bridge - Donor Login</title>
+    <style>
+        /* Common Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar Styles from Index Page */
+        .navbar{
+            height: 100px;
+            width: 100%;
+            background-color: #7f0210;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar_components{
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .navbar_components a {
+            text-decoration: none;
+            line-height: 100px;
+            height: 100%;
+            color: white;
+        }
+
+        .logoelement{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .other_elements{
+            display: flex;
+            gap: 30px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .home{
+            display: flex;
+            align-items: center;
+        }
+
+        .want_to_donate_blood{
+            display: flex;
+            align-items: center;
+        }
+
+        .looking_for_blood{
+            display: flex;
+            align-items: center;
+        }
+
+        .blood_center_login{
+            display: flex;
+            align-items: center;
+        }
+
+        .homeelement{
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #dropdown{
+            display: flex;
+            align-items: center;
+            margin-left: 3px;
+        }
+
+        .looking_for_blood_element{
+            display: flex;
+            align-items: center;
+        }
+
+        .want_to_donate_blood_element{
+            display: flex;
+            align-items: center;
+        }
+
+        .blood_center_login_element{
+            display: flex;
+            align-items: center;
+        }
+
+        .homeelement:hover{
+            background-color: white;
+        }
+
+        .homeelement:hover a{
+            color:#7f0210;
+        }
+
+        .homeelement:hover #dropdown i{
+            color:#7f0210;
+        }
+
+        .looking_for_blood{
+            display: flex;
+        }
+
+        .want_to_donate{
+            display: flex;
+        }
+
+        .blood_center_login{
+            display: flex;
+        }
+
+        .looking_for_blood_element:hover{
+            background-color: white;
+        }
+
+        .looking_for_blood_element:hover a{
+            color:#7f0210;
+        }
+
+        .looking_for_blood_element:hover #dropdown i{
+            color:#7f0210;
+        }
+
+        .want_to_donate_blood_element:hover{
+            background-color: white;
+        }
+
+        .want_to_donate_blood_element:hover a{
+            color:#7f0210;
+        }
+
+        .want_to_donate_blood_element:hover #dropdown i{
+            color:#7f0210;
+        }
+
+        .blood_center_login_element:hover{
+            background-color: white;
+        }
+
+        .blood_center_login_element:hover a{
+            color:#7f0210;
+        }
+
+        .blood_center_login_element:hover #dropdown i{
+            color:#7f0210;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            max-width: 1200px;
+            margin: 120px auto 40px;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        /* Login Page Styles */
+        .login-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .login-form {
+            padding: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .input-group input {
+            flex: 1;
+        }
+
+        .otp-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .otp-btn:hover {
+            background: #b91c1c;
+        }
+
+        .register-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .register-section h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .benefits-list li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .register-btn {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .register-btn:hover {
+            background: #b91c1c;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            background: #f9fafb;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #dc2626;
+            background: white;
+        }
+
+        /* Footer Styles from Index Page */
+        footer {
+            background-color:#7f0210 !important;
+            color: white !important;
+            padding: 30px 10px !important;
+            width: 100% !important;
+            display: flex !important;
+            justify-content: space-around !important;
+            flex-wrap: wrap !important;
+            flex-shrink: 0 !important;
+            margin-top: auto !important;
+            position: relative !important;
+            z-index: 9999 !important;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px 20px;
+        }
+
+        footer h4 {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        footer p {
+            line-height: 1.8;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-form-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .navbar_components {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 0;
+            }
+            
+            .navbar_components a {
+                line-height: 50px;
+            }
+            
+            .other_elements {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .main-content {
+                margin-top: 180px;
+            }
+            
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .login-container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Accessibility Bar -->
-    <div class="accessibility-bar">
-        <div class="accessibility-content">
-            <a href="#" class="accessibility-link"></a>
-            <div class="accessibility-controls">
-                <a href="#" class="accessibility-link">A</a>
-                <a href="#" class="accessibility-link">A+</a>
-                <a href="#" class="accessibility-link">A</a>
-                <a href="#" class="accessibility-link">A-</a>
-                <a href="#" class="accessibility-link">Screen Readers</a>
+    <!-- Navigation Bar from Index Page -->
+    <nav class="navbar">
+        <div class="navbar_components">
+            <div class="logoelement">
+                <!-- Logo removed as requested -->
             </div>
-        </div>
-    </div>
-
-    <!-- Website Header -->
-    <header class="website-header">
-        <div class="header-content">
-            <div class="logo-section">
-                <a href="login.html" class="logo-link">
-                    <div class="logo">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMzAiIGZpbGw9IiNkYzI2MjYiLz4KPHN2ZyB4PSIxNSIgeT0iMTUiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDMwIDMwIiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTE1IDVMMjAgMTBIMTBMMTUgNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNSAxNUwyMCAyMEgxMEwxNSAxNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNSAyNUwyMCAzMEgxMEwxNSAyNVoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="Blood Bridge Logo" class="logo-img">
-                        <div class="logo-text">
-                            <div class="logo-title">Blood Bridge</div>
+            <div class="other_elements">
+                <div class="home">
+                    <div class="homeelement">
+                        <a href="index.html">Home</a>
+                    </div>
+                </div>
+                <div class="looking_for_blood">
+                    <div class="looking_for_blood_element">
+                        <a th:href="@{/looking_for_blood}">Looking for Blood</a>
+                        <div id="dropdown">
+                            <i class="fas fa-caret-down" style="color: white;"></i>
                         </div>
                     </div>
-                </a>
+                </div>
+                <div class="want_to_donate_blood">
+                    <div class="want_to_donate_blood_element">
+                        <a th:href="@{/want_to_donate_blood}">Want to Donate Blood</a>
+                        <div id="dropdown">
+                            <i class="fas fa-caret-down" style="color: white;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="blood_center_login">
+                    <div class="blood_center_login_element">
+                        <a th:href="@{/login}">Blood Center Login</a>
+                        <div id="dropdown">
+                            <i class="fas fa-caret-down" style="color: white;"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <nav class="main-nav">
-                <a href="#" class="nav-link">About Us</a>
-                <a href="#" class="nav-link">Looking for Blood</a>
-                <a href="#" class="nav-link">Want to Donate Blood</a>
-                <a href="#" class="nav-link">Blood Bank Login</a>
-            </nav>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -72,69 +447,28 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-sections">
-                <div class="footer-section">
-                    <h3>Looking for Blood</h3>
-                    <ul>
-                        <li><a href="#">Blood Availability</a></li>
-                        <li><a href="#">Blood Bank Directory</a></li>
-                        <li><a href="#">Thalassemia Request</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Want to Donate Blood</h3>
-                    <ul>
-                        <li><a href="#">Blood Donation Camps</a></li>
-                        <li><a href="login.html">Donor Login</a></li>
-                        <li><a href="#">About Blood Donation</a></li>
-                        <li><a href="#">Register VBD Camp</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Blood Bank Login</h3>
-                    <ul>
-                        <li><a href="#">BloodBridge Login</a></li>
-                        <li><a href="#">Add your Blood Bank</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>About Us</h3>
-                    <ul>
-                        <li><a href="#">About BloodBridge</a></li>
-                        <li><a href="#">Notifications</a></li>
-                        <li><a href="#">BloodBridge FAQs</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Video Gallery</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Mobile Apps</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="footer-info">
-                    <p>© 2016 -2025 <a href="#">by Ministry of Health and Family Welfare</a></p>
-                    <p>® Designed and Developed by <a href="#">Centre for Development of Advanced Computing</a></p>
-                </div>
-                <div class="footer-links">
-                    <a href="#">Terms & Conditions</a>
-                    <span>|</span>
-                    <a href="#">Privacy Policy</a>
-                    <span>|</span>
-                    <a href="#">Accessibility Statement</a>
-                    <span>| Last Updated : Oct 16 2025 |</span>
-                    <a href="#">Site Map</a>
-                </div>
-            </div>
+    <!-- Footer from Index Page -->
+    <footer>
+        <div class="footer-column">
+            <h4>Looking for Blood</h4>
+            <p>Blood Availability<br>Blood Bank Directory<br>Thalassemia Request</p>
+        </div>
+        <div class="footer-column">
+            <h4>Want to Donate Blood</h4>
+            <p>Blood Donation Camps<br>Donor Login<br>About Blood Donation<br>Register VBD Camp</p>
+        </div>
+        <div class="footer-column">
+            <h4>Blood Bank Login</h4>
+            <p>BloodBridge Login<br>Add your Blood Bank</p>
+        </div>
+        <div class="footer-column">
+            <h4>About Us</h4>
+            <p>About Blood Bridge<br>Notifications<br>FAQs<br>Contact Us<br>Mobile Apps</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="/js/want_to_donate_blood.js"></script>
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
