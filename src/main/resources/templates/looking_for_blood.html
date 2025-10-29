@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOOD BRIDGE</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    
+    <!-- TEMPORARY INLINE CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Navbar */
+        .navbar {
+            height: 100px;
+            width: 100%;
+            background-color: #7f0210;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar_components {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .navbar_components a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        
+        .other_elements {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .homeelement:hover, .looking_for_blood_element:hover, 
+        .want_to_donate_blood_element:hover, .blood_center_login_element:hover {
+            background-color: white;
+        }
+        
+        .homeelement:hover a, .looking_for_blood_element:hover a,
+        .want_to_donate_blood_element:hover a, .blood_center_login_element:hover a {
+            color: #7f0210;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 40px;
+            flex: 1;
+        }
+        
+        .main-content h2 {
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        /* Search Form */
+        .search-form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .search-form select, .search-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        
+        .search-form button {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .search-form button:hover {
+            background-color: #b71c1c;
+        }
+        
+        /* Checkboxes */
+        .checkboxes {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .checkboxes label {
+            margin-left: 8px;
+        }
+        
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        table thead {
+            background-color: #d32f2f;
+            color: white;
+        }
+        
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #7f0210;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+        
+        .footer-column {
+            margin: 10px 20px;
+            min-width: 200px;
+        }
+        
+        footer h4 {
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        footer p {
+            line-height: 1.8;
+            color: #ccc;
+        }
+    </style>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+   <!-- Navigation Bar -->
+   <div class="navbar">
+      <div class="navbar_components">
+        <div class="logoelement">
+          <div id="logo" style="color: white; font-size: 24px; font-weight: bold;">
+            BLOOD BRIDGE
+          </div>
+        </div>
+
+        <div class="other_elements">
+          <div class="homeelement">
+            <div class="home"><a href="/">HOME</a></div>
+          </div>
+
+          <div class="looking_for_blood_element">
+            <div class="looking_for_blood"><a href="/looking_for_blood">LOOKING FOR BLOOD</a></div>
+          </div>
+
+          <div class="want_to_donate_blood_element">
+            <div class="want_to_donate_blood"><a th:href="@{/want_to_donate_blood}">WANT TO DONATE BLOOD</a></div>
+          </div>
+
+          <div class="blood_center_login_element">
+            <div class="blood_center_login"><a href="/login">BLOOD CENTER LOGIN</a></div>
+          </div>
+        </div>
+      </div>
+   </div>
+
+   <!-- Main Content -->
+   <div class="main-content">
+        <h2>Nearest Blood Bank (BB) / Blood Storage Unit (BSU)</h2>
+        
+        <div class="search-form">
+            <select>
+                <option>Select State</option>
+            </select>
+            <select>
+                <option>Select District</option>
+            </select>
+            <input type="text" placeholder="Blood Bank or Hospital Name">
+            <button type="button">Search</button>
+        </div>
+
+        <div class="checkboxes">
+            <div>
+                <input type="checkbox" id="govt" checked>
+                <label for="govt">Government Blood Banks</label>
+            </div>
+            <div>
+                <input type="checkbox" id="other">
+                <label for="other">Other Blood Banks</label>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Category</th>
+                    <th>Distance (km)</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="8" style="text-align: center;">No data available in table</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-column">
+            <h4>Looking for Blood</h4>
+            <p>Blood Availability<br>Blood Bank Directory<br>Thalassemia Request</p>
+        </div>
+        <div class="footer-column">
+            <h4>Want to Donate Blood</h4>
+            <p>Blood Donation Camps<br>Donor Login<br>About Blood Donation<br>Register VBD Camp</p>
+        </div>
+        <div class="footer-column">
+            <h4>Blood Bank Login</h4>
+            <p>eRaktkosh Login<br>Add your Blood Bank</p>
+        </div>
+        <div class="footer-column">
+            <h4>About Us</h4>
+            <p>About Blood Bridge<br>Notifications<br>FAQs<br>Contact Us<br>Mobile Apps</p>
+        </div>
+    </footer>
+</body>
+</html>
