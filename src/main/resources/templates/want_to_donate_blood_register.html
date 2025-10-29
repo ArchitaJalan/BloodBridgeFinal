@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bridge - Donor Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Browser Header Simulation -->
+    <div class="browser-header">
+        <div class="browser-tabs">
+            <div class="tab active">Portal Donor Login</div>
+            <div class="tab">New tab</div>
+        </div>
+        <div class="address-bar">
+            <div class="nav-icons">
+                <span class="nav-icon">←</span>
+                <span class="nav-icon">→</span>
+                <span class="nav-icon">↻</span>
+                <span class="nav-icon">⌂</span>
+            </div>
+            <div class="url">eraktkosh.mohfw.gov.in/BLDAHIMS/bloodbank/portalDonorSignup.cnt</div>
+        </div>
+    </div>
+
+    <!-- Website Header -->
+    <header class="website-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-circle">
+                        <span class="logo-text">BloodBridge</span>
+                    </div>
+                    <div class="logo-subtitle"></div>
+                </div>
+            </div>
+            <div class="nav-section">
+                
+                <nav class="main-nav">
+                    <a href="#" class="nav-link active">ABOUT US</a>
+                    <a href="#" class="nav-link">LOOKING FOR BLOOD</a>
+                    <a href="#" class="nav-link">WANT TO DONATE BLOOD</a>
+                    <a href="#" class="nav-link">BLOOD BANK LOGIN</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="form-container">
+            <h1 class="form-title">Donor Sign-Up</h1>
+            
+            <form class="donor-form" id="donorForm">
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="name">Name:*</label>
+                            <input type="text" id="name" name="name" placeholder="First Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gender">Gender:*</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Value</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mobile">Mobile:*</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="Mobile No." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="state">State:*</label>
+                            <select id="state" name="state" required>
+                                <option value="">Select State</option>
+                                <option value="andhra-pradesh">Andhra Pradesh</option>
+                                <option value="karnataka">Karnataka</option>
+                                <option value="tamil-nadu">Tamil Nadu</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="delhi">Delhi</option>
+                                <option value="gujarat">Gujarat</option>
+                                <option value="rajasthan">Rajasthan</option>
+                                <option value="west-bengal">West Bengal</option>
+                                <option value="kerala">Kerala</option>
+                                <option value="punjab">Punjab</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <textarea id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="age">Age:*</label>
+                            <input type="number" id="age" name="age" min="18" max="65" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fatherName">Father Name:*</label>
+                            <input type="text" id="fatherName" name="fatherName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="district">District:*</label>
+                            <select id="district" name="district" required>
+                                <option value="">Select District</option>
+                                <option value="bangalore-urban">Bangalore Urban</option>
+                                <option value="bangalore-rural">Bangalore Rural</option>
+                                <option value="mysore">Mysore</option>
+                                <option value="mangalore">Mangalore</option>
+                                <option value="hubli">Hubli</option>
+                                <option value="belgaum">Belgaum</option>
+                                <option value="gulbarga">Gulbarga</option>
+                                <option value="davangere">Davangere</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pincode">PinCode:*</label>
+                            <input type="text" id="pincode" name="pincode" placeholder="Pin Code" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="captcha-section">
+                    <div class="captcha-display" id="captchaDisplay">PpgPMcQ</div>
+                    <div class="captcha-input-group">
+                        <label for="captcha">Captcha</label>
+                        <input type="text" id="captcha" name="captcha" required>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="signup-btn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
