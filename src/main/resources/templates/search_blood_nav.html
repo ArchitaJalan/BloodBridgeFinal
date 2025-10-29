@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Blood</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="search_blood_nav.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Search for Blood Donors</h2>
+    <form id="searchForm">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="searchBloodGroup">Blood Group</label>
+          <select class="form-control" id="searchBloodGroup" required>
+            <option value="">Choose...</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="searchLocation">Location</label>
+          <input type="text" class="form-control" id="searchLocation" placeholder="Enter city or location" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-danger">Search</button>
+    </form>
+
+    <!-- Search Results -->
+    <div id="results" class="mt-4">
+      <!-- Dynamically populated with JS -->
+    </div>
+  </div>
+
+  <script>
+    const donors = [
+      { name: "Amit Sharma", blood: "A+", city: "Delhi", phone: "9876543210" },
+      { name: "Riya Patel", blood: "O-", city: "Mumbai", phone: "9123456789" },
+      { name: "Kabir Mehra", blood: "B+", city: "Delhi", phone: "9012345678" },
+      { name: "Neha Verma", blood: "AB+", city: "Chennai", phone: "9988776655" }
+    ];
+
+    document.getElementById("searchForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const bloodGroup = document.getElementById("searchBloodGroup").value;
+      const location = document.getElementById("searchLocation").value.trim().toLowerCase();
+      const resultsContainer = document.getElementById("results");
+      resultsContainer.innerHTML = "";
+
+      const filtered = donors.filter(donor =>
+        donor.blood === bloodGroup && donor.city.toLowerCase().includes(location)
+      );
+
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = `<p class="no-result">No donors found matching your criteria.</p>`;
+      } else {
+        filtered.forEach(donor => {
+          const card = `
+            <div class="result-card">
+              <h5>${donor.name}</h5>
+              <p><strong>Blood Group:</strong> ${donor.blood}</p>
+              <p><strong>City:</strong> ${donor.city}</p>
+              <p><strong>Phone:</strong> ${donor.phone}</p>
+            </div>
+          `;
+          resultsContainer.innerHTML += card;
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

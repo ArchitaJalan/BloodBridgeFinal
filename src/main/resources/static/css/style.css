@@ -1,0 +1,343 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box; 
+    /*apan jab koi div ko height width dekar then border dete hai toh wo border uski height width k baahar hota hai...mtlb uski height width main count nahi hota ...but yaha we want ki wo border uski height width main count ho so we use a border type border-box*/
+    color: white;
+    font-weight: 530;
+}
+
+
+.navbar{
+    height: 100px;
+    width: 100%;
+    background-color: #7f0210;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar_components{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.navbar_components a {
+    text-decoration: none;
+    line-height: 100px;
+    height: 100%;
+    color: white;
+
+}
+
+.logoelement{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.other_elements{
+    display: flex;
+    gap: 30px; /* Adjust this value as per your design */
+    justify-content: flex-end; /* Optional: aligns all to the right */
+    align-items: center;       /* Vertical alignment */
+}
+
+.home{
+    display: flex;
+    align-items: center;
+}
+
+.want_to_donate_blood{
+    display: flex;
+    align-items: center;
+}
+
+.looking_for_blood{
+    display: flex;
+    align-items: center;
+}
+
+.blood_center_login{
+    display: flex;
+    align-items: center;
+}
+
+.homeelement{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+#dropdown{
+    display: flex;
+    align-items: center;
+    margin-left: 3px;
+}
+
+.looking_for_blood_element{
+    display: flex;
+    align-items: center;
+}
+
+.want_to_donate_blood_element{
+    display: flex;
+    align-items: center;
+}
+
+.blood_center_login_element{
+    display: flex;
+    align-items: center;
+}
+
+
+.homeelement:hover{
+    background-color: white;
+    /* here after hovering the whole home div will be white */
+}
+
+
+.homeelement:hover a{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.homeelement:hover #dropdown i{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.looking_for_blood{
+    display: flex;
+}
+
+.want_to_donate{
+    display: flex;
+}
+
+.blood_center_login{
+    display: flex;
+}
+
+.looking_for_blood_element:hover{
+    background-color: white;
+    /* here after hovering the whole home div will be white */
+}
+
+.looking_for_blood_element:hover a{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.looking_for_blood_element:hover #dropdown i{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.want_to_donate_blood_element:hover{
+    background-color: white;
+    /* here after hovering the whole home div will be white */
+}
+
+.want_to_donate_blood_element:hover a{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.want_to_donate_blood_element:hover #dropdown i{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.blood_center_login_element:hover{
+    background-color: white;
+    /* here after hovering the whole home div will be white */
+}
+
+.blood_center_login_element:hover a{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.blood_center_login_element:hover #dropdown i{
+    color:#7f0210;
+    /* here on hovering the a tag will be red */
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .stats-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 88px;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .stats-left,
+  .stats-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .stats-left {
+    background-color: #e4b0ab; /* light pink */
+  }
+  
+  .stats-right {
+    background-color: #7f0008; /* dark red */
+  }
+  
+  .stats-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-top: 150px solid #e4b0ab; /* match left background */
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .stats-left,
+  .stats-right {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .number {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .update-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #7f0008;
+    font-weight: bold;
+  }
+
+  #our_services{
+    text-align: center;
+    color: #9b030c;
+    height: 112px;
+    padding: 48px 0px 16px;
+    font-size: 40px;
+    font-weight: 700;
+  }
+  
+  .Services{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .blood_availability{
+    height: 184px;
+    width: 300px;
+    background-size: contain;
+    background-color: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px 0 #7f02101f;
+    padding: 36px 0px 27px;
+    text-align: center;
+  }
+
+
+  .blood_availability img{
+    height: 72px;
+    width: 72px;
+  }
+
+  .blood_availability p{
+    color: #212529;
+    padding: 24px;
+  }
+
+  .blood_center_directory{
+    height: 184px;
+    width: 300px;
+    background-size: contain;
+    background-color: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px 0 #7f02101f;
+    padding: 36px 0px 27px;
+    text-align: center;
+  }
+
+  .blood_center_directory img{
+    height: 72px;
+    width: 72px;
+  }
+
+  .blood_center_directory p{
+    color: #212529;
+    padding: 24px;
+  }
+
+  .donor_login{
+    height: 184px;
+    width: 300px;
+    background-size: contain;
+    background-color: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px 0 #7f02101f;
+    padding: 36px 0px 27px;
+    text-align: center;
+  }
+
+  .donor_login img{
+    height: 72px;
+    width: 72px;
+  }
+
+  .donor_login p{
+    color: #212529;
+    padding: 24px;
+  }
+
+  .voluntary_blood_camp{
+    height: 184px;
+    width: 300px;
+    background-size: contain;
+    background-color: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px 0 #7f02101f;
+    padding: 36px 0px 27px;
+    text-align: center;
+  }
+
+  .voluntary_blood_camp img{
+    height: 72px;
+    width: 72px;
+  }
+
+  .voluntary_blood_camp p{
+    color: #212529;
+    padding: 24px;
+  }
+
