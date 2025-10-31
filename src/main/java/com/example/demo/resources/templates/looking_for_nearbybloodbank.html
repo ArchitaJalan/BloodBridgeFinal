@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Stock Availability</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="BLOOD BRIDGE Logo">
+    <nav>
+      <a href="#">LOOKING FOR BLOOD</a>
+      <a href="#">WANT TO DONATE BLOOD</a>
+      <a href="#">BLOOD BANK LOGIN</a>
+      <a class="active" href="#">ABOUT US</a>
+    </nav>
+  </header>
+
+  <main class="content-wrapper">
+    <h2>Blood Stock Availability</h2>
+
+    <div class="filter-box">
+      <select id="state">
+        <option disabled selected>Select State</option>
+		<option value="Andhra Pradesh">Andhra Pradesh</option>
+		<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+		<option value="Assam">Assam</option>
+		<option value="Bihar">Bihar</option>
+		<option value="Chhattisgarh">Chhattisgarh</option>
+		<option value="Goa">Goa</option>
+		<option value="Gujarat">Gujarat</option>
+		<option value="Haryana">Haryana</option>
+		<option value="Himachal Pradesh">Himachal Pradesh</option>
+		<option value="Jharkhand">Jharkhand</option>
+		<option value="Karnataka">Karnataka</option>
+		<option value="Kerala">Kerala</option>
+		<option value="Madhya Pradesh">Madhya Pradesh</option>
+		<option value="Maharashtra">Maharashtra</option>
+		<option value="Manipur">Manipur</option>
+		<option value="Meghalaya">Meghalaya</option>
+		<option value="Mizoram">Mizoram</option>
+		<option value="Nagaland">Nagaland</option>
+		<option value="Odisha">Odisha</option>
+		<option value="Punjab">Punjab</option>
+		<option value="Rajasthan">Rajasthan</option>
+		<option value="Sikkim">Sikkim</option>
+		<option value="Tamil Nadu">Tamil Nadu</option>
+		<option value="Telangana">Telangana</option>
+		<option value="Tripura">Tripura</option>
+		<option value="Uttar Pradesh">Uttar Pradesh</option>
+		<option value="Uttarakhand">Uttarakhand</option>
+		<option value="West Bengal">West Bengal</option>
+      </select>
+
+      <select id="district">
+        <option disabled selected>Select District</option>
+        
+      </select>
+
+      <select>
+        <option>All Blood Groups</option>
+		<option>A+</option>
+		  <option>A−</option>
+		  <option>B+</option>
+		  <option>B−</option>
+		  <option>AB+</option>
+		  <option>AB−</option>
+		  <option>O+</option>
+		  <option>O−</option>
+      </select>
+
+      <select>
+        <option>Whole Blood</option>
+        <option>Platelets</option>
+        <option>Plasma</option>
+      </select>
+
+      <button>Search</button>
+    </div>
+
+    <div class="notice-bar">
+      🩸 Select State and/or District for stock availability.
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Blood Bank</th>
+          <th>Category</th>
+          <th>Availability</th>
+          <th>Last Updated</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Empty table for now -->
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <div class="footer-section">
+      <h4>Looking for Blood</h4>
+      <p><a href="#">Blood Availability</a></p>
+      <p><a href="#">Blood Bank Directory</a></p>
+    </div>
+    <div class="footer-section">
+      <h4>Want to Donate Blood</h4>
+      <p><a href="#">Blood Donation Camps</a></p>
+      <p><a href="#">Donor Login</a></p>
+    </div>
+    <div class="footer-section">
+      <h4>Blood Bank Login</h4>
+      <p><a href="#">eRaktkosh Login</a></p>
+      <p><a href="#">Add your Blood Bank</a></p>
+    </div>
+    <div class="footer-section">
+      <h4>About Us</h4>
+      <p><a href="#">About eRaktkosh</a></p>
+      <p><a href="#">Notifications</a></p>
+    </div>
+  </footer>
+  
+  <script>
+    const stateDistrictMap = {
+      "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Kadapa", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari"],
+      "Arunachal Pradesh": ["Tawang", "West Kameng", "East Kameng", "Papum Pare", "Kurung Kumey", "Kra Daadi", "Lower Subansiri", "Upper Subansiri", "West Siang", "East Siang", "Siang", "Upper Siang", "Lower Siang", "Lower Dibang Valley", "Dibang Valley", "Anjaw", "Lohit", "Namsai", "Changlang", "Tirap", "Longding"],
+      "Assam": ["Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Hojai", "Jorhat", "Kamrup", "Kamrup Metropolitan", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Sivasagar", "Sonitpur", "South Salmara-Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"],
+      "Bihar": ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"],
+      "Chhattisgarh": ["Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bemetara", "Bijapur", "Bilaspur", "Dantewada", "Dhamtari", "Durg", "Gariaband", "Gaurela-Pendra-Marwahi", "Janjgir-Champa", "Jashpur", "Kanker", "Kawardha", "Kondagaon", "Korba", "Korea", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sukma", "Surajpur", "Surguja"],
+      "Goa": ["North Goa", "South Goa"],
+      "Gujarat": ["Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", "Bhavnagar", "Botad", "Chhota Udaipur", "Dahod", "Dang", "Devbhumi Dwarka", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kheda", "Kutch", "Mahisagar", "Mehsana", "Morbi", "Narmada", "Navsari", "Panchmahal", "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat", "Surendranagar", "Tapi", "Vadodara", "Valsad"],
+      "Haryana": ["Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Nuh", "Palwal", "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"],
+      "Himachal Pradesh": ["Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul and Spiti", "Mandi", "Shimla", "Sirmaur", "Solan", "Una"],
+      "Jharkhand": ["Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih", "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahebganj", "Seraikela Kharsawan", "Simdega", "West Singhbhum"],
+      "Karnataka": ["Bagalkot", "Ballari", "Belagavi", "Bengaluru Rural", "Bengaluru Urban", "Bidar", "Chamarajanagar", "Chikballapur", "Chikkamagaluru", "Chitradurga", "Dakshina Kannada", "Davanagere", "Dharwad", "Gadag", "Hassan", "Haveri", "Kalaburagi", "Kodagu", "Kolar", "Koppal", "Mandya", "Mysuru", "Raichur", "Ramanagara", "Shivamogga", "Tumakuru", "Udupi", "Uttara Kannada", "Vijayapura", "Yadgir"]
+
+    };
+
+    // Event listener to populate district dropdown
+    function updateDistricts() {
+      const stateSelect = document.getElementById("state");
+      const districtSelect = document.getElementById("district");
+      const selectedState = stateSelect.value;
+
+      
+      districtSelect.innerHTML = "<option value=''>Select District</option>";
+
+      if (selectedState && stateDistrictMap[selectedState]) {
+        stateDistrictMap[selectedState].forEach(function (district) {
+          const option = document.createElement("option");
+          option.value = district;
+          option.text = district;
+          districtSelect.appendChild(option);
+        });
+      }
+    }
+
+    
+    window.onload = function () {
+      document.getElementById("state").addEventListener("change", updateDistricts);
+    };
+  </script>
+
+  </script>
+
+
+</body>
+</html>    
