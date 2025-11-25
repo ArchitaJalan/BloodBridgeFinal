@@ -1,145 +1,109 @@
-/* Registration Page Styles */
 .registration-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
 .registration-header {
     text-align: center;
-    margin-bottom: 30px;
-    color: #e74c3c;
+    margin-bottom: 2rem;
 }
 
 .registration-header h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    color: #dc3545;
+    margin-bottom: 0.5rem;
 }
 
-.registration-header p {
-    color: #7f8c8d;
-    font-size: 1.1rem;
+.section-title {
+    color: #333;
+    border-bottom: 2px solid #dc3545;
+    padding-bottom: 0.5rem;
+    margin: 1.5rem 0 1rem 0;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
 .form-label {
     font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 8px;
+    color: #333;
+    margin-bottom: 0.5rem;
     display: block;
 }
 
+.form-label.required::after {
+    content: " *";
+    color: #dc3545;
+}
+
 .form-control {
-    border: 2px solid #e1e8ed;
-    border-radius: 8px;
-    padding: 12px;
-    transition: all 0.3s ease;
-    width: 100%;
-    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.75rem;
+    transition: border-color 0.3s ease;
 }
 
 .form-control:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-    outline: none;
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
 .btn-register {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: white;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
     width: 100%;
-    transition: all 0.3s ease;
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
     font-size: 1.1rem;
-    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 .btn-register:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+    background: #c82333;
 }
 
 .login-link {
     text-align: center;
-    margin-top: 20px;
-    color: #7f8c8d;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
 }
 
 .login-link a {
-    color: #e74c3c;
-    font-weight: 600;
+    color: #dc3545;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .login-link a:hover {
     text-decoration: underline;
 }
 
-.required::after {
-    content: " *";
-    color: #e74c3c;
-}
-
 .error-message {
-    background: rgba(231, 76, 60, 0.1);
-    color: #c0392b;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(192, 57, 43, 0.3);
+    background: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid #f5c6cb;
 }
 
 .success-message {
-    background: rgba(46, 204, 113, 0.1);
-    color: #27ae60;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    border: 1px solid #27ae60;
+    background: #d1edff;
+    color: #155724;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid #c3e6cb;
 }
 
-.section-title {
-    color: #e74c3c;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f8f9fa;
-}
-
-/* Date Input Styling */
-input[type="date"] {
-    position: relative;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    background: transparent;
-    bottom: 0;
-    color: transparent;
-    cursor: pointer;
-    height: auto;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: auto;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .registration-container {
-        margin: 20px;
-        padding: 20px;
-    }
-    
-    .registration-header h2 {
-        font-size: 1.5rem;
-    }
+.text-muted {
+    font-size: 0.875rem;
 }

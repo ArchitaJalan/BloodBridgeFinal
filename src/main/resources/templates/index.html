@@ -6,14 +6,16 @@
     <title>BloodBridge</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    
+     <link rel="stylesheet" th:href="@{/css/style.css}">
     
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
-   <!-- Navigation Bar (Same as looking_for_blood.html) -->
-   <div class="navbar">
+   <!-- Navigation Bar -->
+   <div class="navbar" th:fragment="navbar">
       <div class="navbar_components">
         <div class="logoelement">
           <div id="logo">BLOOD BRIDGE</div>
@@ -36,10 +38,11 @@
           <div class="blood_center_login_element">
             <div th:if="${isLoggedIn}" class="nav-user-info">
                <span>Welcome, <strong th:text="${donor.fullName}"></strong></span>
-               <a href="/logout" class="logout-btn">Logout</a>
+          
+               <a th:href="@{/auth/logout}" class="logout-btn">Logout</a>
             </div>
             <div th:unless="${isLoggedIn}" class="blood_center_login">
-                <a th:href="@{/login}">BLOOD CENTER LOGIN</a>
+                <a th:href="@{/auth/login}">BLOOD CENTER LOGIN</a>
             </div>
           </div>
         </div>
@@ -48,13 +51,22 @@
 
    <!-- Main Content Area -->
    <div style="margin-top: 120px;">
-        <!-- Success Message after Login -->
-        <div th:if="${success}" class="success-message" th:text="${success}"></div>
+        <!-- Success Message after Registration/Login -->
+        <div th:if="${success}" class="alert alert-success text-center" 
+             style="max-width: 1200px; margin: 20px auto; padding: 20px; border-radius: 10px; font-size: 1.1rem;">
+            <i class="fas fa-check-circle"></i> 
+            <span th:text="${success}"></span>
+        </div>
 
         <!-- User Welcome Section (Only shown when logged in) -->
         <div th:if="${isLoggedIn}" class="user-welcome">
-            <h3>🎉 Welcome back to Blood Bridge!</h3>
+            <h3>🩸 Welcome to Blood Bridge!</h3>
             <p>Thank you for being a life-saving donor, <strong th:text="${donor.fullName}"></strong>!</p>
+            <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
+                <i class="fas fa-tint"></i> Blood Group: <strong th:text="${donor.bloodGroup}"></strong> |
+                <i class="fas fa-user"></i> Username: <strong th:text="${donor.username}"></strong> |
+                <i class="fas fa-envelope"></i> Email: <strong th:text="${donor.email}"></strong>
+            </div>
         </div>
 
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -132,8 +144,8 @@
         <div style="height: 50px;"></div>
    </div>
     
-    <!-- Footer (Same as looking_for_blood.html) -->
-    <footer>
+    <!-- Footer -->
+    <footer th:fragment="footer">
         <div class="footer-column">
             <h4>Looking for Blood</h4>
             <p>Blood Availability<br>Blood Bank Directory<br>Thalassemia Request</p>

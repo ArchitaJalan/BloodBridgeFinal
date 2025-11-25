@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Blood Bridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/myAccount.css}">
+</head>
+<body>
+    <!-- Include Navigation -->
+    <div th:replace="~{index :: navbar}"></div>
+
+    <div class="container">
+        <div class="account-container">
+            <!-- Success Message -->
+            <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+                <span th:text="${success}"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+            <div class="profile-card">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-md-8 text-md-start text-center">
+                            <h1 th:text="${donor.fullName}"></h1>
+                            <p class="mb-0">Blood Donor Profile</p>
+                        </div>
+                        <div class="col-md-4 text-md-end text-center">
+                            <div class="blood-group-badge">
+                                <span th:text="${donor.bloodGroup}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Information -->
+                <div class="profile-section">
+                    <div class="row">
+                        <!-- Personal Information -->
+                        <div class="col-md-6">
+                            <h4 class="mb-4"><i class="fas fa-user me-2"></i>Personal Information</h4>
+                            
+                            <div class="info-group">
+                                <div class="info-label">Full Name</div>
+                                <div class="info-value" th:text="${donor.fullName}"></div>
+                            </div>
+
+                            <div class="info-group">
+                                <div class="info-label">Date of Birth</div>
+                                <div class="info-value" th:text="${#dates.format(donor.dob, 'dd MMMM yyyy')}"></div>
+                            </div>
+
+                            <div class="info-group">
+                                <div class="info-label">Gender</div>
+                                <div class="info-value" th:text="${donor.gender}"></div>
+                            </div>
+
+                            <div class="info-group">
+                                <div class="info-label">Blood Group</div>
+                                <div class="info-value">
+                                    <span class="blood-group-badge" th:text="${donor.bloodGroup}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="col-md-6">
+                            <h4 class="mb-4"><i class="fas fa-address-card me-2"></i>Contact Information</h4>
+                            
+                            <div class="info-group">
+                                <div class="info-label">Email Address</div>
+                                <div class="info-value" th:text="${donor.email}"></div>
+                            </div>
+
+                            <div class="info-group">
+                                <div class="info-label">Phone Number</div>
+                                <div class="info-value" th:text="${donor.phoneNumber} ?: 'Not provided'"></div>
+                            </div>
+
+                            <div class="info-group">
+                                <div class="info-label">Address</div>
+                                <div class="info-value" th:text="${donor.address} ?: 'Not provided'"></div>
+                            </div>
+
+                            <div class="info-group">
+                                <div class="info-label">Username</div>
+                                <div class="info-value" th:text="${donor.username}"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Information -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4 class="mb-4"><i class="fas fa-heartbeat me-2"></i>Health Information</h4>
+                            
+                            <div class="info-group">
+                                <div class="info-label">Health Status</div>
+                                <div class="info-value">
+                                    <span th:if="${donor.healthy}" class="text-success">
+                                        <i class="fas fa-check-circle"></i> Certified Healthy Donor
+                                    </span>
+                                    <span th:unless="${donor.healthy}" class="text-warning">
+                                        <i class="fas fa-exclamation-circle"></i> Health status not confirmed
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="info-group">
+                                <div class="info-label">Medical History</div>
+                                <div class="info-value" th:text="${donor.medicalHistory} ?: 'No medical conditions reported'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a th:href="@{/edit-profile}" class="btn-edit">
+                                <i class="fas fa-edit me-2"></i>Edit Profile
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <small class="text-muted">
+                                Member since: <span th:text="${#dates.format(donor.registrationDate, 'dd MMMM yyyy')}"></span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div th:replace="~{index :: footer}"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
