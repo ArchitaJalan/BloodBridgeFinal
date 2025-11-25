@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Login - BloodBridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" th:href="@{/css/BloodBankLogin.css}">
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+</head>
+
+<body>
+   <!-- Navigation Bar -->
+   <div class="navbar" th:fragment="navbar">
+      <div class="navbar_components">
+        <div class="logoelement">
+          <div id="logo">BLOOD BRIDGE</div>
+        </div>
+
+        <div class="other_elements">
+          <div class="homeelement">
+            <div class="home"><a th:href="@{/index}">HOME</a></div>
+          </div>
+
+          <div class="looking_for_blood_element">
+            <div class="looking_for_blood"><a th:href="@{/looking_for_blood}">LOOKING FOR BLOOD</a></div>
+          </div>
+
+          <div class="want_to_donate_blood_element">
+            <div class="want_to_donate_blood"><a th:href="@{/want_to_donate_blood}">WANT TO DONATE BLOOD</a></div>
+          </div>
+
+          <!-- Dynamic Login/User Info -->
+          <div class="blood_center_login_element">
+            <div th:if="${isLoggedIn}" class="nav-user-info">
+               <span>Welcome, <strong th:text="${donor.fullName}"></strong></span>
+               <a th:href="@{/auth/logout}" class="logout-btn">Logout</a>
+            </div>
+            <div th:unless="${isLoggedIn}" class="dropdown">
+                <button class="btn dropdown-toggle login-dropdown-btn" type="button" id="loginDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  LOGIN
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+                  <li><a class="dropdown-item" th:href="@{/auth/login}">Donor Login</a></li>
+                  <li><a class="dropdown-item" th:href="@{/auth/bloodBankLogin}">Blood Bank Login</a></li>
+                  <li><a class="dropdown-item" th:href="@{/auth/hospitalLogin}">Hospital Login</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+
+   <!-- Main Content Area -->
+   <div style="margin-top: 120px;">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-header">
+                    <div class="blood-bank-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h2>Blood Bank Login</h2>
+                    <p>Access your blood bank account</p>
+                </div>
+                
+                <!-- Error Message -->
+                <div th:if="${error}" class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    <span th:text="${error}"></span>
+                </div>
+                
+                <!-- Success Message -->
+                <div th:if="${success}" class="alert alert-success">
+                    <i class="fas fa-check-circle"></i> 
+                    <span th:text="${success}"></span>
+                </div>
+                
+                <form th:action="@{/auth/bloodBankLogin}" method="post">
+                    <div class="form-group">
+                        <label for="username" class="form-label">
+                            <i class="fas fa-user"></i> Username
+                        </label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="username" 
+                               name="username" 
+                               placeholder="Enter your username" 
+                               required
+                               th:value="${username}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input type="password" 
+                               class="form-control" 
+                               id="password" 
+                               name="password" 
+                               placeholder="Enter your password" 
+                               required>
+                    </div>
+                    
+                    <button type="submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Login to Blood Bank
+                    </button>
+                </form>
+                
+                <div class="login-links">
+                    <p>
+                        <a th:href="@{/auth/forgotPassword}">Forgot Password?</a> | 
+                        <a th:href="@{/auth/bloodBankRegister}">Register New Blood Bank</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/auth/login}">← Back to Donor Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add some space before footer -->
+        <div style="height: 50px;"></div>
+   </div>
+    
+    <!-- Footer -->
+    <footer th:fragment="footer">
+        <div class="footer-column">
+            <h4>Looking for Blood</h4>
+            <p>Blood Availability<br>Blood Bank Directory<br>Thalassemia Request</p>
+        </div>
+        <div class="footer-column">
+            <h4>Want to Donate Blood</h4>
+            <p>Blood Donation Camps<br>Donor Login<br>About Blood Donation<br>Register VBD Camp</p>
+        </div>
+        <div class="footer-column">
+            <h4>Blood Bank Login</h4>
+            <p>eRaktkosh Login<br>Add your Blood Bank</p>
+        </div>
+        <div class="footer-column">
+            <h4>About Us</h4>
+            <p>About Blood Bridge<br>Notifications<br>FAQs<br>Contact Us<br>Mobile Apps</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -13,7 +13,7 @@ body {
     background-color: #f8f9fa;
 }
 
-/* NAVBAR STYLES - Same as looking_for_blood.html */
+/* NAVBAR STYLES */
 .navbar {
     height: 100px;
     width: 100%;
@@ -59,20 +59,18 @@ body {
     display: block;
 }
 
-/* Hover effects - Same as looking_for_blood.html */
+/* Hover effects */
 .homeelement:hover, 
 .looking_for_blood_element:hover, 
 .want_to_donate_blood_element:hover, 
-.blood_center_login_element:hover,
-.my_account_element:hover {
+.blood_center_login_element:hover {
     background-color: white;
 }
 
 .homeelement:hover a, 
 .looking_for_blood_element:hover a,
 .want_to_donate_blood_element:hover a, 
-.blood_center_login_element:hover a,
-.my_account_element:hover a {
+.blood_center_login_element:hover a {
     color: #7f0210;
 }
 
@@ -88,7 +86,7 @@ body {
     font-weight: bold;
 }
 
-.account-btn, .logout-btn {
+.logout-btn {
     color: white;
     text-decoration: none;
     padding: 8px 16px;
@@ -98,9 +96,64 @@ body {
     font-weight: bold;
 }
 
-.account-btn:hover, .logout-btn:hover {
+.logout-btn:hover {
     background: white;
     color: #7f0210;
+}
+
+/* DROPDOWN STYLES - FIXED */
+.login-dropdown-btn {
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+.login-dropdown-btn:hover,
+.login-dropdown-btn:focus,
+.login-dropdown-btn:active,
+.login-dropdown-btn.show {
+    background-color: white !important;
+    color: #7f0210 !important;
+}
+
+.blood_center_login_element:hover .login-dropdown-btn {
+    background-color: white !important;
+    color: #7f0210 !important;
+}
+
+/* Dropdown menu styling - Red box with white text */
+.dropdown-menu {
+    background-color: #7f0210 !important; /* Red box */
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    margin-top: 8px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}
+
+.dropdown-item {
+    color: white !important; /* White text */
+    padding: 12px 20px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    font-weight: bold !important;
+    background-color: transparent !important; /* Ensure background stays red */
+}
+
+.dropdown-item:last-child {
+    border-bottom: none !important;
+}
+
+/* Remove ALL hover effects - keep text white and background red */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #7f0210 !important; /* Keep red background on hover */
+    color: white !important; /* Keep white text on hover */
 }
 
 /* Main Content Area */
@@ -401,7 +454,7 @@ body {
     margin: 0;
 }
 
-/* FOOTER STYLES - Same as looking_for_blood.html */
+/* FOOTER STYLES */
 footer {
     background-color: #7f0210;
     color: white;

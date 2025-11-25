@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
     
-     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
@@ -38,18 +38,24 @@
           <div class="blood_center_login_element">
             <div th:if="${isLoggedIn}" class="nav-user-info">
                <span>Welcome, <strong th:text="${donor.fullName}"></strong></span>
-          
                <a th:href="@{/auth/logout}" class="logout-btn">Logout</a>
             </div>
-            <div th:unless="${isLoggedIn}" class="blood_center_login">
-                <a th:href="@{/auth/login}">BLOOD CENTER LOGIN</a>
+            <div th:unless="${isLoggedIn}" class="dropdown">
+                <button class="btn dropdown-toggle login-dropdown-btn" type="button" id="loginDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  LOGIN
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+                  <li><a class="dropdown-item" th:href="@{/auth/login}">Donor Login</a></li>
+                  <li><a class="dropdown-item" th:href="@{/auth/BloodBankLogin}">Blood Bank Login</a></li>
+                  <li><a class="dropdown-item" th:href="@{/auth/hospitalLogin}">Hospital Login</a></li>
+                </ul>
             </div>
           </div>
         </div>
       </div>
    </div>
 
-   <!-- Main Content Area -->
+   <!-- Rest of your content remains the same -->
    <div style="margin-top: 120px;">
         <!-- Success Message after Registration/Login -->
         <div th:if="${success}" class="alert alert-success text-center" 
